@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竹光國民運動中心-預約機器人</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f7f7f7;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        input[type="date"]{
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>竹光國民運動中心-預約機器人</h1>
+    
+    <form id="booking-form">
+        <!-- 運動種類選擇 -->
+        <label for="sport">運動種類</label>
+        <select id="sport" name="sport">
+            <option value="5">排球</option>
+        </select>
+
+        <!-- 日期選擇 -->
+        <label for="date">選擇日期</label>
+        <input type="date" id="date" name="date" required>
+
+        <!-- 時段選擇 -->
+        <label for="time">選擇時段</label>
+        <select id="time" name="time">
+            <option value="6">06:00 - 07:00</option>
+            <option value="7">07:00 - 08:00</option>
+            <option value="8">08:00 - 09:00</option>
+            <option value="9">09:00 - 10:00</option>
+            <option value="10">10:00 - 11:00</option>
+            <option value="11">11:00 - 12:00</option>
+            <option value="12">12:00 - 13:00</option>
+            <option value="13">13:00 - 14:00</option>
+            <option value="14">14:00 - 15:00</option>
+            <option value="15">15:00 - 16:00</option>
+            <option value="16">16:00 - 17:00</option>
+            <option value="17">17:00 - 18:00</option>
+            <option value="18">18:00 - 19:00</option>
+            <option value="19">19:00 - 20:00</option>
+            <option value="20">20:00 - 21:00</option>
+            <option value="21">21:00 - 22:00</option>
+        </select>
+
+        <button type="submit">提交預約</button>
+    </form>
+
+    <script>
+        const today = new Date();
+        today.setDate(today.getDate() + 7);
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        const defaultDate = `${year}-${month}-${day}`;
+        document.getElementById('date').value = defaultDate;
+
+        document.getElementById('booking-form').addEventListener('submit', async (event) => {
+            console.log("booking")
+            event.preventDefault();
+
+            const url = 'https://scr.cyc.org.tw/tp16.aspx?module=net_booking&files=booking_place&StepFlag=25&QPid=2235&QTime=6&PT=5&D=2024/08/24';
+            const options = {
+            method: 'GET',
+            headers: {
+                cookie: 'ASP.NET_SessionId=gdnhkmagh1hrbjlgtyvo0ulo; captchaToken=0.0gPWNLfga4G0Jg3sAHbDoaV9bFoNd1_bZa5jJzpv06lKVEtdpMijiYZu-KVndpV5ryKl_S_rJ-NmXJxFgf1oa3KAx4Zvhj_HINwLDTcHC8SRNqF_b7cQCk71g7VZNiOngumg_j5pT4MulmSvHJV5UV-AZwSkKvx5wvdKnfIrw-ceL4a-vjDESYUf_4wMV11J5s4eYhFfs-EtdCK7G8xPGBikIgL3BmdGjUw8Ln4kvXlSiVb853AZx9hRHjXTBhDTJYkVoZobOkU7AQwOvfGxIX-83KOCU2LQRUdi7236oMkWZaNQ2QZeiw-U2my9CtoToekSaEM3lxta584jYgRydq_IvyOkOk0QuLmJ1H77jJJl4Hi7mUrKixA5SvRlG-DChyisGmUZjlrTbByyX4wiuQr9C3LybIIRjYyK8Mvzs3DpHXZH3JG9sbMQbx8gzXQybB4rr9DCji6QNs2mgXdSpA.K7rsYUrxqmG3Ji72pF_2lA.f53debae54f3c90a51686167ad31d47fb1c432ccf9b53a6478b956e38fca6365',
+                authority: 'scr.cyc.org.tw',
+                method: 'GET',
+                path: '/tp16.aspx?module=ind&files=ind',
+                scheme: 'https',
+                accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+                'accept-encoding': 'gzip, deflate, br, zstd',
+                'accept-language': 'zh-TW,zh;q=0.9',
+                'cache-control': 'max-age=0',
+                priority: 'u=0, i',
+                referer: 'https://scr.cyc.org.tw/tp16.aspx?module=member&files=member_mt',
+                'sec-ch-ua': '"Not)A;Brand";v="99", "Google Chrome";v="127", "Chromium";v="127"',
+                'sec-ch-ua-mobile': '?0',
+                'sec-ch-ua-platform': '"Windows"',
+                'sec-fetch-dest': 'document',
+                'sec-fetch-mode': 'navigate',
+                'sec-fetch-site': 'same-origin',
+                'sec-fetch-user': '?1',
+                'upgrade-insecure-requests': '1',
+                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36'
+            }
+            };
+
+            try {
+                const response = await fetch(url, options);
+                const data = await response.json();
+                console.log(data);
+                } catch (error) {
+                console.error(error);
+            }
+        })
+    </script>
+</body>
+</html>
