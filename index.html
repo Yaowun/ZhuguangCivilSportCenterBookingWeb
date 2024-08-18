@@ -140,6 +140,7 @@
             };
 
             console.log(`Booking ${date} ${time.padStart(2, '0')}:00 ~ ${(parseInt(time, 10)+1).toString().padStart(2, '0')}:00`)
+            console.log(url)
             console.log(options)
             try {
                 const response = await fetch(url, options);
