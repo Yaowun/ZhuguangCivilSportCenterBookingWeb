@@ -105,41 +105,47 @@
         document.getElementById('date').value = defaultDate;
 
         document.getElementById('booking-form').addEventListener('submit', async (event) => {
-            console.log("booking")
             event.preventDefault();
 
-            const url = 'https://scr.cyc.org.tw/tp16.aspx?module=net_booking&files=booking_place&StepFlag=25&QPid=2235&QTime=6&PT=5&D=2024/08/24';
+            const sport = document.getElementById('sport').value
+            const date = document.getElementById('date').value
+            const time = document.getElementById('time').value
+            const url = `https://scr.cyc.org.tw/tp16.aspx?module=net_booking&files=booking_place&StepFlag=25&QPid=2235&QTime=${time}&PT=${sport}&D=${date.replace(/-/g, '/')}`;
+            const cookieValue = '0.0gPWNLfga4G0Jg3sAHbDoaV9bFoNd1_bZa5jJzpv06lKVEtdpMijiYZu-KVndpV5ryKl_S_rJ-NmXJxFgf1oa3KAx4Zvhj_HINwLDTcHC8SRNqF_b7cQCk71g7VZNiOngumg_j5pT4MulmSvHJV5UV-AZwSkKvx5wvdKnfIrw-ceL4a-vjDESYUf_4wMV11J5s4eYhFfs-EtdCK7G8xPGBikIgL3BmdGjUw8Ln4kvXlSiVb853AZx9hRHjXTBhDTJYkVoZobOkU7AQwOvfGxIX-83KOCU2LQRUdi7236oMkWZaNQ2QZeiw-U2my9CtoToekSaEM3lxta584jYgRydq_IvyOkOk0QuLmJ1H77jJJl4Hi7mUrKixA5SvRlG-DChyisGmUZjlrTbByyX4wiuQr9C3LybIIRjYyK8Mvzs3DpHXZH3JG9sbMQbx8gzXQybB4rr9DCji6QNs2mgXdSpA.K7rsYUrxqmG3Ji72pF_2lA.f53debae54f3c90a51686167ad31d47fb1c432ccf9b53a6478b956e38fca6365'
             const options = {
-            method: 'GET',
-            headers: {
-                cookie: 'ASP.NET_SessionId=gdnhkmagh1hrbjlgtyvo0ulo; captchaToken=0.0gPWNLfga4G0Jg3sAHbDoaV9bFoNd1_bZa5jJzpv06lKVEtdpMijiYZu-KVndpV5ryKl_S_rJ-NmXJxFgf1oa3KAx4Zvhj_HINwLDTcHC8SRNqF_b7cQCk71g7VZNiOngumg_j5pT4MulmSvHJV5UV-AZwSkKvx5wvdKnfIrw-ceL4a-vjDESYUf_4wMV11J5s4eYhFfs-EtdCK7G8xPGBikIgL3BmdGjUw8Ln4kvXlSiVb853AZx9hRHjXTBhDTJYkVoZobOkU7AQwOvfGxIX-83KOCU2LQRUdi7236oMkWZaNQ2QZeiw-U2my9CtoToekSaEM3lxta584jYgRydq_IvyOkOk0QuLmJ1H77jJJl4Hi7mUrKixA5SvRlG-DChyisGmUZjlrTbByyX4wiuQr9C3LybIIRjYyK8Mvzs3DpHXZH3JG9sbMQbx8gzXQybB4rr9DCji6QNs2mgXdSpA.K7rsYUrxqmG3Ji72pF_2lA.f53debae54f3c90a51686167ad31d47fb1c432ccf9b53a6478b956e38fca6365',
-                authority: 'scr.cyc.org.tw',
                 method: 'GET',
-                path: '/tp16.aspx?module=ind&files=ind',
-                scheme: 'https',
-                accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-                'accept-encoding': 'gzip, deflate, br, zstd',
-                'accept-language': 'zh-TW,zh;q=0.9',
-                'cache-control': 'max-age=0',
-                priority: 'u=0, i',
-                referer: 'https://scr.cyc.org.tw/tp16.aspx?module=member&files=member_mt',
-                'sec-ch-ua': '"Not)A;Brand";v="99", "Google Chrome";v="127", "Chromium";v="127"',
-                'sec-ch-ua-mobile': '?0',
-                'sec-ch-ua-platform': '"Windows"',
-                'sec-fetch-dest': 'document',
-                'sec-fetch-mode': 'navigate',
-                'sec-fetch-site': 'same-origin',
-                'sec-fetch-user': '?1',
-                'upgrade-insecure-requests': '1',
-                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36'
-            }
+                headers: {
+                    cookie: `ASP.NET_SessionId=gdnhkmagh1hrbjlgtyvo0ulo; captchaToken=${cookieValue}`,
+                    authority: 'scr.cyc.org.tw',
+                    method: 'GET',
+                    path: '/tp16.aspx?module=ind&files=ind',
+                    scheme: 'https',
+                    accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+                    'accept-encoding': 'gzip, deflate, br, zstd',
+                    'accept-language': 'zh-TW,zh;q=0.9',
+                    'cache-control': 'max-age=0',
+                    priority: 'u=0, i',
+                    referer: 'https://scr.cyc.org.tw/tp16.aspx?module=member&files=member_mt',
+                    'sec-ch-ua': '"Not)A;Brand";v="99", "Google Chrome";v="127", "Chromium";v="127"',
+                    'sec-ch-ua-mobile': '?0',
+                    'sec-ch-ua-platform': '"Windows"',
+                    'sec-fetch-dest': 'document',
+                    'sec-fetch-mode': 'navigate',
+                    'sec-fetch-site': 'same-origin',
+                    'sec-fetch-user': '?1',
+                    'upgrade-insecure-requests': '1',
+                    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36'
+                },
+                mode: 'cors'
             };
 
+            console.log(`Booking ${date} ${time.padStart(2, '0')}:00 ~ ${(parseInt(time, 10)+1).toString().padStart(2, '0')}:00`)
+            console.log(options)
             try {
                 const response = await fetch(url, options);
                 const data = await response.json();
                 console.log(data);
-                } catch (error) {
+            } catch (error) {
                 console.error(error);
             }
         })
