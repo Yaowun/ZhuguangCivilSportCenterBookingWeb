@@ -123,7 +123,7 @@
             const date = document.getElementById('date').value
             const time = document.getElementById('time').value
             const sessionID = document.getElementById('sessionID').value
-            const bookingUrl = `https://cors-anywhere.herokuapp.com/https://scr.cyc.org.tw/tp16.aspx?module=net_booking&files=booking_place&StepFlag=25&QPid=2235&QTime=${time}&PT=${sport}&D=${date.replace(/-/g, '/')}`;
+            const bookingUrl = `https://scr.cyc.org.tw/tp16.aspx?module=net_booking&files=booking_place&StepFlag=25&QPid=2235&QTime=${time}&PT=${sport}&D=${date.replace(/-/g, '/')}`;
             const cookieValue = '0.0gPWNLfga4G0Jg3sAHbDoaV9bFoNd1_bZa5jJzpv06lKVEtdpMijiYZu-KVndpV5ryKl_S_rJ-NmXJxFgf1oa3KAx4Zvhj_HINwLDTcHC8SRNqF_b7cQCk71g7VZNiOngumg_j5pT4MulmSvHJV5UV-AZwSkKvx5wvdKnfIrw-ceL4a-vjDESYUf_4wMV11J5s4eYhFfs-EtdCK7G8xPGBikIgL3BmdGjUw8Ln4kvXlSiVb853AZx9hRHjXTBhDTJYkVoZobOkU7AQwOvfGxIX-83KOCU2LQRUdi7236oMkWZaNQ2QZeiw-U2my9CtoToekSaEM3lxta584jYgRydq_IvyOkOk0QuLmJ1H77jJJl4Hi7mUrKixA5SvRlG-DChyisGmUZjlrTbByyX4wiuQr9C3LybIIRjYyK8Mvzs3DpHXZH3JG9sbMQbx8gzXQybB4rr9DCji6QNs2mgXdSpA.K7rsYUrxqmG3Ji72pF_2lA.f53debae54f3c90a51686167ad31d47fb1c432ccf9b53a6478b956e38fca6365'
             const options = {
                 method: 'GET',
